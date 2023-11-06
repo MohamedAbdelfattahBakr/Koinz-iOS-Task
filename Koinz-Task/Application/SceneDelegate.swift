@@ -15,24 +15,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
 
-        // Ensure the scene being connected to is a window scene,
-        // if not just return.
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        // Create a new UIWindow using the windowScene constructor which takes in a window scene.
         let window = UIWindow(windowScene: windowScene)
         
-        // Make a ViewController instance to be the root of the coordinator.
-        let viewController = ViewController()
+        let viewController = FlikerImageViewController()
         coordinator = FlickrImagesCoordinator(delegate: viewController)
         viewController.coordinator = coordinator
         let navigationController = UINavigationController(rootViewController: viewController)
-        coordinator?.start()
 
-        // Set the root view controller of the window to the navigation controller which contains ViewController instance.
         window.rootViewController = navigationController
 
-        // Set the window and make it keyAndVisible.
         self.window = window
         window.makeKeyAndVisible()
     }

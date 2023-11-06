@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+protocol FlickrImagesViewModelDelegate: AnyObject {
+    func didStartFetchingImages()
+    func didFetchImages(_ model: FlickrPictureUIModel)
+    func didFailWithError(_ error: Error)
+    
+}

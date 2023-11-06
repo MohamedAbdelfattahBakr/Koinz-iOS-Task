@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+enum BaseError: Error {
+    case networkError
+    case businessError(String)
+    
+    var localizedDescription: String {
+        switch self {
+        case .networkError:
+            return "Network Error Message"
+        case .businessError(let error):
+            return error
+        }
+    }
+}

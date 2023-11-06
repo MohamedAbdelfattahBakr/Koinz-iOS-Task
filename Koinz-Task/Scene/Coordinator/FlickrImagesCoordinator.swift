@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+class FlickrImagesCoordinator {
+    var viewModel: FlickrImagesViewModel?
+    
+    init(delegate: FlickrImagesViewModelDelegate) {
+        viewModel = FlickrImagesViewModel()
+        viewModel?.delegate = delegate
+    }
+}
+

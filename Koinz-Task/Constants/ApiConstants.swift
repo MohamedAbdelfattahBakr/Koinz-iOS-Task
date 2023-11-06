@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+enum Constants {
+    static var baseUrl: String {
+        return "https://www.flickr.com/services/rest/"
+    }
+    
+    static var imageBaseUrl: String {
+        return "https://live.staticflickr.com/"
+    }
+    
+    static var apiKey = "c38483336389490f1e86f2f900d53dc1"
+}
+
