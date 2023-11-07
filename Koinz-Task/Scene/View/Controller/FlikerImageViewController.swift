@@ -19,12 +19,14 @@ class FlikerImageViewController: UIViewController {
     private var refreshControl = UIRefreshControl()
     private var lastPage = 0
     private var reuseIdentifier = "FlickrImageCell"
+    private var adBannerReuseIdentifier = "AdBannerCell"
+    private var items: [[Any]] = []
     
     convenience init(viewModel: FlickrImagesViewModel) {
         self.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
     }
-
+    
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +48,11 @@ class FlikerImageViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
-    
+        
         tableView.register(FlickrImageCell.self,
                            forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(AdBannerCell.self,
+                           forCellReuseIdentifier: adBannerReuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.prefetchDataSource = self
@@ -62,7 +66,7 @@ class FlikerImageViewController: UIViewController {
     @objc private func refreshData(_ sender: Any) {
         viewModel?.refresh()
     }
-        
+    
     private func showLoading() {
         SVProgressHUD.show()
     }
@@ -74,15 +78,27 @@ class FlikerImageViewController: UIViewController {
 
 extension FlikerImageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        pictures.count
+        return items.flatMap { $0 }.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier,
-                                                 for: indexPath) as! FlickrImageCell
-        let picture = pictures[indexPath.row]
-        cell.configure(with: picture)
-        return cell
+        let flattenedItems = items.flatMap { $0 }
+        let item = flattenedItems[indexPath.row]
+        
+        if let picture = item as? FlickrPictureModel {
+            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier,
+                                                     for: indexPath) as! FlickrImageCell
+            cell.configure(with: picture)
+            return cell
+        } else if let adBanner = item as? AdBanner {
+            let cell = tableView.dequeueReusableCell(withIdentifier: adBannerReuseIdentifier,
+                                                     for: indexPath) as! AdBannerCell
+            cell.configure(with: adBanner)
+            return cell
+        }
+        
+        return UITableViewCell()
     }
 }
 
@@ -99,13 +115,18 @@ extension FlikerImageViewController: UITableViewDataSourcePrefetching {
 }
 
 extension FlikerImageViewController: FlickrImagesViewModelDelegate {
- 
+    
     func didFetchImages(_ model: ResponseBody?) {
         guard let photos = model?.photo else { return }
         let picturesPhotos = photos.map {
             FlickrPictureModel(model: $0)
         }
         self.pictures.append(contentsOf: picturesPhotos)
+        let chunkedItems = stride(from: 0, to: picturesPhotos.count, by: 5).map {
+            Array(picturesPhotos[$0..<min($0 + 5, picturesPhotos.count)]) + [AdBanner(image: UIImage(named: "ad-banner")!)]
+        }
+        self.items.append(contentsOf: chunkedItems)
+        
         self.lastPage = model?.pages ?? 0
         self.tableView.reloadData()
         self.refreshControl.endRefreshing()

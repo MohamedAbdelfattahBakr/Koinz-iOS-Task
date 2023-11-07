@@ -12,6 +12,8 @@
 		B75DD3032AF9A8F5006FE4AD /* FlikerApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75DD3022AF9A8F5006FE4AD /* FlikerApiManager.swift */; };
 		B75DD3052AF9C90D006FE4AD /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = B75DD3042AF9C90D006FE4AD /* Reachability */; };
 		B75DD3092AF9DD47006FE4AD /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75DD3082AF9DD47006FE4AD /* RealmManager.swift */; };
+		B75DD30B2AF9E50B006FE4AD /* AdBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75DD30A2AF9E50B006FE4AD /* AdBannerCell.swift */; };
+		B75DD30D2AF9E52B006FE4AD /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75DD30C2AF9E52B006FE4AD /* BannerModel.swift */; };
 		B775ED192AF94E1200752F1F /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B775ED182AF94E1200752F1F /* SDWebImage */; };
 		B775ED1B2AF94E1200752F1F /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B775ED1A2AF94E1200752F1F /* SDWebImageMapKit */; };
 		B775ED1E2AF9627F00752F1F /* SVProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = B775ED1D2AF9627F00752F1F /* SVProgressHUD */; };
@@ -35,6 +37,8 @@
 		B75DD3002AF9A88E006FE4AD /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B75DD3022AF9A8F5006FE4AD /* FlikerApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlikerApiManager.swift; sourceTree = "<group>"; };
 		B75DD3082AF9DD47006FE4AD /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		B75DD30A2AF9E50B006FE4AD /* AdBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdBannerCell.swift; sourceTree = "<group>"; };
+		B75DD30C2AF9E52B006FE4AD /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 		B775ED262AF9640D00752F1F /* FlikerImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlikerImageViewController.swift; sourceTree = "<group>"; };
 		B775ED292AF9645C00752F1F /* FlickrImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrImageCell.swift; sourceTree = "<group>"; };
 		B775ED2C2AF9647D00752F1F /* FlickrImagesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrImagesCoordinator.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 			children = (
 				B775ED3D2AF972C700752F1F /* ImagesModel.swift */,
 				B775ED422AF9732500752F1F /* UIModel.swift */,
+				B75DD30C2AF9E52B006FE4AD /* BannerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				B775ED292AF9645C00752F1F /* FlickrImageCell.swift */,
+				B75DD30A2AF9E50B006FE4AD /* AdBannerCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -302,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B75DD30B2AF9E50B006FE4AD /* AdBannerCell.swift in Sources */,
 				B75DD3092AF9DD47006FE4AD /* RealmManager.swift in Sources */,
 				B75DD2FF2AF9A872006FE4AD /* NetworkManager.swift in Sources */,
 				B775ED432AF9732500752F1F /* UIModel.swift in Sources */,
@@ -310,6 +317,7 @@
 				B775ED412AF972F400752F1F /* ApiConstants.swift in Sources */,
 				B775ED2F2AF9650100752F1F /* FlikerImageViewModel.swift in Sources */,
 				B775ED272AF9640D00752F1F /* FlikerImageViewController.swift in Sources */,
+				B75DD30D2AF9E52B006FE4AD /* BannerModel.swift in Sources */,
 				B7AE8E492AF803FF003530DA /* AppDelegate.swift in Sources */,
 				B775ED3E2AF972C700752F1F /* ImagesModel.swift in Sources */,
 				B775ED312AF9652600752F1F /* FlickrImagesViewModelProtocol.swift in Sources */,
