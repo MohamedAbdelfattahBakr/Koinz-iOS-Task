@@ -8,8 +8,7 @@
 import Foundation
 
 protocol FlickrImagesViewModelDelegate: AnyObject {
-    func didStartFetchingImages()
-    func didFetchImages(_ model: FlickrPictureUIModel)
+    func didFetchImages(_ model: ResponseBody?)
     func didFailWithError(_ error: Error)
     
 }

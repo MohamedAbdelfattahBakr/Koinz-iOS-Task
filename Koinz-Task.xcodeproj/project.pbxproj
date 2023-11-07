@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B75DD2FF2AF9A872006FE4AD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75DD2FE2AF9A872006FE4AD /* NetworkManager.swift */; };
+		B75DD3012AF9A88E006FE4AD /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75DD3002AF9A88E006FE4AD /* Router.swift */; };
+		B75DD3032AF9A8F5006FE4AD /* FlikerApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75DD3022AF9A8F5006FE4AD /* FlikerApiManager.swift */; };
+		B75DD3052AF9C90D006FE4AD /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = B75DD3042AF9C90D006FE4AD /* Reachability */; };
+		B75DD3092AF9DD47006FE4AD /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75DD3082AF9DD47006FE4AD /* RealmManager.swift */; };
 		B775ED192AF94E1200752F1F /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = B775ED182AF94E1200752F1F /* SDWebImage */; };
 		B775ED1B2AF94E1200752F1F /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B775ED1A2AF94E1200752F1F /* SDWebImageMapKit */; };
 		B775ED1E2AF9627F00752F1F /* SVProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = B775ED1D2AF9627F00752F1F /* SVProgressHUD */; };
@@ -15,14 +20,10 @@
 		B775ED2D2AF9647D00752F1F /* FlickrImagesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775ED2C2AF9647D00752F1F /* FlickrImagesCoordinator.swift */; };
 		B775ED2F2AF9650100752F1F /* FlikerImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775ED2E2AF9650100752F1F /* FlikerImageViewModel.swift */; };
 		B775ED312AF9652600752F1F /* FlickrImagesViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775ED302AF9652600752F1F /* FlickrImagesViewModelProtocol.swift */; };
-		B775ED392AF96B0300752F1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B775ED382AF96B0300752F1F /* Main.storyboard */; };
 		B775ED3E2AF972C700752F1F /* ImagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775ED3D2AF972C700752F1F /* ImagesModel.swift */; };
 		B775ED412AF972F400752F1F /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775ED402AF972F400752F1F /* ApiConstants.swift */; };
 		B775ED432AF9732500752F1F /* UIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775ED422AF9732500752F1F /* UIModel.swift */; };
-		B775ED462AF9737600752F1F /* BaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775ED452AF9737600752F1F /* BaseError.swift */; };
-		B775ED482AF9739300752F1F /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775ED472AF9739300752F1F /* ApiRequest.swift */; };
 		B7AE8E492AF803FF003530DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AE8E482AF803FF003530DA /* AppDelegate.swift */; };
-		B7AE8E4B2AF803FF003530DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AE8E4A2AF803FF003530DA /* SceneDelegate.swift */; };
 		B7AE8E522AF803FF003530DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7AE8E512AF803FF003530DA /* Assets.xcassets */; };
 		B7AE8E552AF803FF003530DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7AE8E532AF803FF003530DA /* LaunchScreen.storyboard */; };
 		B7C4DA5A2AF9752B009518DA /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = B7C4DA592AF9752B009518DA /* Realm */; };
@@ -30,20 +31,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B75DD2FE2AF9A872006FE4AD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B75DD3002AF9A88E006FE4AD /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		B75DD3022AF9A8F5006FE4AD /* FlikerApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlikerApiManager.swift; sourceTree = "<group>"; };
+		B75DD3082AF9DD47006FE4AD /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		B775ED262AF9640D00752F1F /* FlikerImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlikerImageViewController.swift; sourceTree = "<group>"; };
 		B775ED292AF9645C00752F1F /* FlickrImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrImageCell.swift; sourceTree = "<group>"; };
 		B775ED2C2AF9647D00752F1F /* FlickrImagesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrImagesCoordinator.swift; sourceTree = "<group>"; };
 		B775ED2E2AF9650100752F1F /* FlikerImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlikerImageViewModel.swift; sourceTree = "<group>"; };
 		B775ED302AF9652600752F1F /* FlickrImagesViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrImagesViewModelProtocol.swift; sourceTree = "<group>"; };
-		B775ED382AF96B0300752F1F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B775ED3D2AF972C700752F1F /* ImagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesModel.swift; sourceTree = "<group>"; };
 		B775ED402AF972F400752F1F /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		B775ED422AF9732500752F1F /* UIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIModel.swift; sourceTree = "<group>"; };
-		B775ED452AF9737600752F1F /* BaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseError.swift; sourceTree = "<group>"; };
-		B775ED472AF9739300752F1F /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		B7AE8E452AF803FF003530DA /* Koinz-Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Koinz-Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7AE8E482AF803FF003530DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B7AE8E4A2AF803FF003530DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B7AE8E512AF803FF003530DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7AE8E542AF803FF003530DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B7AE8E562AF803FF003530DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +56,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B775ED1E2AF9627F00752F1F /* SVProgressHUD in Frameworks */,
+				B75DD3052AF9C90D006FE4AD /* Reachability in Frameworks */,
 				B775ED1B2AF94E1200752F1F /* SDWebImageMapKit in Frameworks */,
 				B7C4DA5A2AF9752B009518DA /* Realm in Frameworks */,
 				B7C4DA5C2AF9752B009518DA /* RealmSwift in Frameworks */,
@@ -65,6 +67,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B75DD3062AF9DD2E006FE4AD /* Utilites */ = {
+			isa = PBXGroup;
+			children = (
+				B75DD3072AF9DD3D006FE4AD /* Manager */,
+			);
+			path = Utilites;
+			sourceTree = "<group>";
+		};
+		B75DD3072AF9DD3D006FE4AD /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B75DD3082AF9DD47006FE4AD /* RealmManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		B775ED1F2AF963D700752F1F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				B7AE8E482AF803FF003530DA /* AppDelegate.swift */,
-				B7AE8E4A2AF803FF003530DA /* SceneDelegate.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -164,8 +181,9 @@
 		B775ED442AF9736F00752F1F /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				B775ED452AF9737600752F1F /* BaseError.swift */,
-				B775ED472AF9739300752F1F /* ApiRequest.swift */,
+				B75DD2FE2AF9A872006FE4AD /* NetworkManager.swift */,
+				B75DD3022AF9A8F5006FE4AD /* FlikerApiManager.swift */,
+				B75DD3002AF9A88E006FE4AD /* Router.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -189,12 +207,12 @@
 		B7AE8E472AF803FF003530DA /* Koinz-Task */ = {
 			isa = PBXGroup;
 			children = (
+				B75DD3062AF9DD2E006FE4AD /* Utilites */,
 				B775ED442AF9736F00752F1F /* Network */,
 				B775ED3F2AF972E700752F1F /* Constants */,
 				B775ED212AF963E200752F1F /* Application */,
 				B775ED202AF963DC00752F1F /* Scene */,
 				B775ED1F2AF963D700752F1F /* Resources */,
-				B775ED382AF96B0300752F1F /* Main.storyboard */,
 				B7AE8E562AF803FF003530DA /* Info.plist */,
 			);
 			path = "Koinz-Task";
@@ -222,6 +240,7 @@
 				B775ED1D2AF9627F00752F1F /* SVProgressHUD */,
 				B7C4DA592AF9752B009518DA /* Realm */,
 				B7C4DA5B2AF9752B009518DA /* RealmSwift */,
+				B75DD3042AF9C90D006FE4AD /* Reachability */,
 			);
 			productName = "Koinz-Task";
 			productReference = B7AE8E452AF803FF003530DA /* Koinz-Task.app */;
@@ -271,7 +290,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B775ED392AF96B0300752F1F /* Main.storyboard in Resources */,
 				B7AE8E552AF803FF003530DA /* LaunchScreen.storyboard in Resources */,
 				B7AE8E522AF803FF003530DA /* Assets.xcassets in Resources */,
 			);
@@ -284,18 +302,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B775ED482AF9739300752F1F /* ApiRequest.swift in Sources */,
+				B75DD3092AF9DD47006FE4AD /* RealmManager.swift in Sources */,
+				B75DD2FF2AF9A872006FE4AD /* NetworkManager.swift in Sources */,
 				B775ED432AF9732500752F1F /* UIModel.swift in Sources */,
+				B75DD3032AF9A8F5006FE4AD /* FlikerApiManager.swift in Sources */,
 				B775ED2D2AF9647D00752F1F /* FlickrImagesCoordinator.swift in Sources */,
 				B775ED412AF972F400752F1F /* ApiConstants.swift in Sources */,
 				B775ED2F2AF9650100752F1F /* FlikerImageViewModel.swift in Sources */,
 				B775ED272AF9640D00752F1F /* FlikerImageViewController.swift in Sources */,
 				B7AE8E492AF803FF003530DA /* AppDelegate.swift in Sources */,
-				B775ED462AF9737600752F1F /* BaseError.swift in Sources */,
 				B775ED3E2AF972C700752F1F /* ImagesModel.swift in Sources */,
 				B775ED312AF9652600752F1F /* FlickrImagesViewModelProtocol.swift in Sources */,
-				B7AE8E4B2AF803FF003530DA /* SceneDelegate.swift in Sources */,
 				B775ED2A2AF9645C00752F1F /* FlickrImageCell.swift in Sources */,
+				B75DD3012AF9A88E006FE4AD /* Router.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,7 +462,7 @@
 				INFOPLIST_FILE = "Koinz-Task/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -471,7 +490,7 @@
 				INFOPLIST_FILE = "Koinz-Task/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -547,6 +566,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B75DD3042AF9C90D006FE4AD /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B775ED3A2AF970F800752F1F /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
+		};
 		B775ED182AF94E1200752F1F /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B775ED172AF94E1200752F1F /* XCRemoteSwiftPackageReference "SDWebImage" */;

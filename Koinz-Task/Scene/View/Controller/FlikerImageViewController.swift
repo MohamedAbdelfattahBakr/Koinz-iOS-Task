@@ -14,22 +14,24 @@ class FlikerImageViewController: UIViewController {
     
     //MARK: - Properties
     private var tableView: UITableView!
-    private var viewModel: FlickrImagesViewModel?
+    private var viewModel: FlickrImagesViewModel!
     private var pictures: [FlickrPictureModel] = []
     private var refreshControl = UIRefreshControl()
-    var coordinator: FlickrImagesCoordinator?
+    private var lastPage = 0
+    private var reuseIdentifier = "FlickrImageCell"
     
+    convenience init(viewModel: FlickrImagesViewModel) {
+        self.init(nibName: nil, bundle: nil)
+        self.viewModel = viewModel
+    }
+
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        coordinator = FlickrImagesCoordinator(delegate: self)
-        viewModel = coordinator?.viewModel
         setupTableView()
         setupRefreshControl()
-        fetchCachedImages()
-        if pictures.isEmpty {
-            viewModel?.fetchImages(page: 0)
-        }
+        showLoading()
+        viewModel.fetchImages()
     }
     
     //MARK: - Setups
@@ -44,11 +46,12 @@ class FlikerImageViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
-        
-        tableView.register(FlickrImageCell.self, forCellReuseIdentifier: "FlickrImageCell")
+    
+        tableView.register(FlickrImageCell.self,
+                           forCellReuseIdentifier: reuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
-        
+        tableView.prefetchDataSource = self
     }
     
     private func setupRefreshControl() {
@@ -57,25 +60,15 @@ class FlikerImageViewController: UIViewController {
     }
     
     @objc private func refreshData(_ sender: Any) {
-        viewModel?.fetchImages(page: 0)
+        viewModel?.refresh()
     }
-    private func fetchCachedImages() {
-        let config = Realm.Configuration(
-            schemaVersion: 1,
-            migrationBlock: { migration, oldSchemaVersion in},
-            deleteRealmIfMigrationNeeded: true
-        )
         
-        Realm.Configuration.defaultConfiguration = config
-        
-        do {
-            let realm = try Realm()
-            let cachedImages = realm.objects(FlickrPhoto.self)
-            self.pictures = cachedImages.map { FlickrPictureModel(model: $0) }
-            self.tableView.reloadData()
-        } catch {
-            print("Error initializing Realm: \(error)")
-        }
+    private func showLoading() {
+        SVProgressHUD.show()
+    }
+    
+    private func hideLoading() {
+        SVProgressHUD.dismiss()
     }
 }
 
@@ -85,49 +78,49 @@ extension FlikerImageViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FlickrImageCell", for: indexPath) as! FlickrImageCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier,
+                                                 for: indexPath) as! FlickrImageCell
         let picture = pictures[indexPath.row]
         cell.configure(with: picture)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
-    }
 }
 
+extension FlikerImageViewController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if viewModel.canLoadMore(lastPage: self.lastPage,
+                                     currentRow: indexPath.row,
+                                     totalDataCount: self.pictures.count) {
+                viewModel.loadMore()
+            }
+        }
+    }
+}
 
 extension FlikerImageViewController: FlickrImagesViewModelDelegate {
-    func didStartFetchingImages() {
-        if pictures.isEmpty {
-            SVProgressHUD.show()
+ 
+    func didFetchImages(_ model: ResponseBody?) {
+        guard let photos = model?.photo else { return }
+        let picturesPhotos = photos.map {
+            FlickrPictureModel(model: $0)
         }
-    }
-    
-    func didFetchImages(_ model: FlickrPictureUIModel) {
-        SVProgressHUD.dismiss()
-        self.pictures.append(contentsOf: model.images)
+        self.pictures.append(contentsOf: picturesPhotos)
+        self.lastPage = model?.pages ?? 0
         self.tableView.reloadData()
-        self.viewModel?.isFetchingNextPage = false
         self.refreshControl.endRefreshing()
+        self.hideLoading()
+        self.viewModel.saveToDataBase(photos: pictures.map {$0.photo}, pages: lastPage)
     }
-    
     
     func didFailWithError(_ error: Error) {
-        SVProgressHUD.dismiss()
-        viewModel?.isFetchingNextPage = false
         self.refreshControl.endRefreshing()
+        self.hideLoading()
     }
 }
 
-extension FlikerImageViewController: UIScrollViewDelegate, UITableViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        let distanceFromBottom = contentHeight - offsetY
-        
-        if distanceFromBottom < scrollView.frame.height && !(viewModel?.isFetchingNextPage ?? false) {
-            viewModel?.fetchNextPage()
-        }
+extension FlikerImageViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
     }
 }

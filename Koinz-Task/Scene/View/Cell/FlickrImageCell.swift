@@ -41,8 +41,8 @@ class FlickrImageCell: UITableViewCell {
         switch picture.image {
         case .url(let url):
             flickrImageView.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "placeholder"))
-        case .imageName(let imageName):
-            flickrImageView.image = UIImage(named: imageName)
+        default:
+            break
         }
     }
 }

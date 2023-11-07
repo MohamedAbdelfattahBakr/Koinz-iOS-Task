@@ -9,7 +9,7 @@ import Foundation
 
 enum Constants {
     static var baseUrl: String {
-        return "https://www.flickr.com/services/rest/"
+        return "https://www.flickr.com/services/"
     }
     
     static var imageBaseUrl: String {

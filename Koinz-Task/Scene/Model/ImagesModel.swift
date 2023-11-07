@@ -8,33 +8,40 @@
 import Foundation
 import RealmSwift
 
-struct PhotosListResponse: Codable {
-    let photos: FlickrPhotos?
+struct PhotosResponse: Codable {
+    let photos: ResponseBody?
     let stat: String
     let message: String?
 }
 
-struct FlickrPhotos: Codable {
+struct ResponseBody: Codable {
     let page, pages, perpage, total: Int?
     let photo: [FlickrPhoto]?
+    
+    init(page: Int?, pages: Int?, perpage: Int? = nil, total: Int? = nil, photo: [FlickrPhoto]?) {
+        self.page = page
+        self.pages = pages
+        self.perpage = perpage
+        self.total = total
+        self.photo = photo
+    }
 }
 
 
-struct ImageListBody: Codable {
+struct PhotoRequest: Codable {
     init(page: Int) {
         self.page = page
     }
-    
     var method = "flickr.photos.search"
     var format = "json"
     var text = "Color"
     var page: Int
     var per_page = 20
     var api_key = Constants.apiKey
-    var nojsoncallback = 1
+    var nojsoncallback = 50
 }
 
-extension ImageListBody {
+extension PhotoRequest {
     var dictionary: [String: Any] {
         return [
             "method": method,
@@ -47,16 +54,27 @@ extension ImageListBody {
         ]
     }
 }
+struct FlickrPhoto: Codable {
+    var id: String
+    var owner: String
+    var secret: String
+    var server: String
+    var farm: Int
+    var title: String
+}
 
-class FlickrPhoto: Object, Codable {
+class RealmFlickrPhoto: Object {
     @objc dynamic var id = ""
     @objc dynamic var owner = ""
     @objc dynamic var secret = ""
     @objc dynamic var server = ""
     @objc dynamic var farm = 0
     @objc dynamic var title = ""
+    @objc dynamic var pages: Int = 0
+    @objc dynamic var currentPage: Int = 0
 
-    override static func primaryKey() -> String? {
+    override class func primaryKey() -> String? {
         return "id"
     }
 }
+
